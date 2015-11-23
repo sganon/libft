@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 11:53:13 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/23 12:38:22 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/23 14:51:07 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/23 16:43:37 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+char	*ft_strncpy(char *dst, char *src, size_t n)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (ft_strlen(src) < n)
+	{
+		while (dst[i])
+		{
+			dst[i] = 0;
+			i++;
+		}
+	}
+	return (dst);
 }
