@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 14:51:07 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/24 17:17:19 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/24 16:27:39 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/24 17:17:30 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, char *src, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	unsigned int	i;
+	unsigned int	j;
+	unsigned int	k;
+	char			*ret;
 
 	i = 0;
-	while (src[i] != 0 && i < n)
+	ret = ft_strdup(s1);
+	if (s2 == NULL)
+		return (ret);
+	while (i < n)
 	{
-		dst[i] = src[i];
+		j = i;
+		k = 0;
+		while (ret[j] == s2[k] && j < n)
+		{
+			j++;
+			k++;
+			if (s2[k] == 0)
+				return (char *)(&ret[i]);
+		}
 		i++;
 	}
-	return (dst);
+	return (NULL);
 }

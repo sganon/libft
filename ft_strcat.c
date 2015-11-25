@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 14:51:07 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/24 17:17:19 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/24 11:00:55 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/24 11:05:09 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, char *src, size_t n)
+char	*ft_strcat(char *s1, char *s2)
 {
-	unsigned int	i;
+	int	i;
+	int j;
 
-	i = 0;
-	while (src[i] != 0 && i < n)
+	i = ft_strlen(s1) + 1;
+	j = 0;
+	while (s2[j])
 	{
-		dst[i] = src[i];
+		s1[i] = s2[j];
 		i++;
+		j++;
 	}
-	return (dst);
+	return (s1);
 }

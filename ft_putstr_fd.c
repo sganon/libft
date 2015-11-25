@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:44:42 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/23 12:48:23 by sganon           ###   ########.fr       */
+/*   Updated: 2015/11/24 11:15:45 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putstr_fd(const char *s, int fd)
 {
 	int length;
-	
+
 	length = ft_strlen(s);
 	write(fd, s, length);
 }
