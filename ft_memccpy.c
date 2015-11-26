@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 13:27:09 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/26 11:23:19 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/26 12:12:23 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/26 19:42:39 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *s1, const char *s2)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+	char				*src2;
+	char				*dst2;
+	unsigned int		i;
 
 	i = 0;
-	if (s2[0] == 0)
-		return ((char *)s1);
-	while (s1[i])
+	src2 = (char *)src;
+	dst2 = (char *)dst;
+	if (n == 0 || dst == src)
+		return (dst);
+	while (i < n && src2[i] != (unsigned char)c)
 	{
-		j = i;
-		k = 0;
-		while (s1[j] == s2[k])
-		{
-			j++;
-			k++;
-			if (s2[k] == 0)
-				return (char *)(&s1[i]);
-		}
+		dst2[i] = src2[i];
 		i++;
 	}
-	return (NULL);
+	return (dst);
 }

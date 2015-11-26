@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 13:27:09 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/26 11:23:19 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/26 14:27:26 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/26 18:37:00 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *s1, const char *s2)
+static char	*ft_strtrim_front(char *s)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+	int i;
 
 	i = 0;
-	if (s2[0] == 0)
-		return ((char *)s1);
-	while (s1[i])
-	{
-		j = i;
-		k = 0;
-		while (s1[j] == s2[k])
-		{
-			j++;
-			k++;
-			if (s2[k] == 0)
-				return (char *)(&s1[i]);
-		}
+	while (ft_isspace(s[i]))
 		i++;
+	return (&s[i]);
+}
+
+static char	*ft_strtrim_back(char *s)
+{
+	int i;
+
+	i = ft_strlen(s) - 1;
+	while (ft_isspace(s[i]))
+	{
+		s[i] = 0;
+		i--;
 	}
-	return (NULL);
+	return (s);
+}
+
+char		*ft_strtrim(char const *s)
+{
+	char	*str;
+
+	str = ft_strdup(s);
+	if (str == NULL)
+		return (NULL);
+	return (ft_strtrim_back(ft_strtrim_front(str)));
 }

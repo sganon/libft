@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:51:07 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/24 17:17:19 by sganon           ###   ########.fr       */
+/*   Updated: 2015/11/25 22:21:29 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ char	*ft_strncpy(char *dst, char *src, size_t n)
 	while (src[i] != 0 && i < n)
 	{
 		dst[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dst[i] = 0;
 		i++;
 	}
 	return (dst);

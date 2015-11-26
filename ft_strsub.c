@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 13:27:09 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/26 11:23:19 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/26 12:47:25 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/26 14:00:57 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *s1, const char *s2)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+	char				*dest;
+	unsigned int		i;
 
 	i = 0;
-	if (s2[0] == 0)
-		return ((char *)s1);
-	while (s1[i])
+	dest = (char *)malloc(len * sizeof(char) + 1);
+	if (s && len > 0)
 	{
-		j = i;
-		k = 0;
-		while (s1[j] == s2[k])
+		if (dest == NULL || s == NULL)
+			return (NULL);
+		while (s[start] && i < len)
 		{
-			j++;
-			k++;
-			if (s2[k] == 0)
-				return (char *)(&s1[i]);
+			dest[i] = s[start];
+			i++;
+			start++;
 		}
-		i++;
+		dest[i] = 0;
 	}
-	return (NULL);
+	return (dest);
 }

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 13:27:09 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/26 11:23:19 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/26 12:38:51 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/26 12:43:50 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *s1, const char *s2)
+char	*ft_strnew(size_t size)
 {
+	char			*str;
 	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
 
 	i = 0;
-	if (s2[0] == 0)
-		return ((char *)s1);
-	while (s1[i])
+	str = (char *)malloc(size * sizeof(char));
+	while (i < size)
 	{
-		j = i;
-		k = 0;
-		while (s1[j] == s2[k])
-		{
-			j++;
-			k++;
-			if (s2[k] == 0)
-				return (char *)(&s1[i]);
-		}
+		str[i] = 0;
 		i++;
 	}
-	return (NULL);
+	return (str);
 }

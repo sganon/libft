@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:00:55 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/24 11:05:09 by sganon           ###   ########.fr       */
+/*   Updated: 2015/11/26 16:27:47 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 char	*ft_strcat(char *s1, char *s2)
 {
-	int	i;
-	int j;
+	char	*dst;
 
-	i = ft_strlen(s1) + 1;
-	j = 0;
-	while (s2[j])
-	{
-		s1[i] = s2[j];
-		i++;
-		j++;
-	}
+	dst = s1;
+	while (*dst)
+		dst++;
+	ft_strcpy(dst, s2);
 	return (s1);
 }
