@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:15:53 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/26 19:50:57 by sganon           ###   ########.fr       */
+/*   Updated: 2015/11/27 16:48:48 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+void	*ft_memmove(void *dst, const void *src, size_t len);
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+void	ft_striter(char *s, void (*f)(char *));
+void	ft_strdel(char **as);
+void	*ft_memalloc(size_t size);
+void	ft_memdel(void **ap);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);

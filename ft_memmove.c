@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 16:22:58 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/27 19:25:05 by sganon           ###   ########.fr       */
+/*   Created: 2015/11/27 16:44:39 by sganon            #+#    #+#             */
+/*   Updated: 2015/11/27 16:57:41 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char			*str1;
-	unsigned char			*str2;
-	unsigned int			i;
+	void	*ptr;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (n--)
+	if (dst && src)
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
+		ptr = malloc(len);
+		if (ptr == NULL)
+			return (dst);
+		ft_memcpy(ptr, src, len);
+		ft_memcpy(dst, ptr, len);
+		return (dst);
 	}
-	return (0);
+	return (dst);
 }
