@@ -6,7 +6,7 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 15:48:05 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/27 18:34:37 by sganon           ###   ########.fr       */
+/*   Updated: 2015/11/29 17:25:37 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*dest;
 	unsigned char	k;
 
-	if (s && n != 0)
+	if (n != 0)
 	{
 		k = (unsigned char)c;
 		dest = (unsigned char *)s;
