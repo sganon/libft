@@ -6,25 +6,25 @@
 /*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:37:35 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/30 07:43:19 by sganon           ###   ########.fr       */
+/*   Updated: 2015/12/01 14:04:54 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(const char *s1)
 {
 	char	*dest;
 	int		length;
 	int		i;
 
-	length = ft_strlen(s);
+	length = ft_strlen(s1);
 	dest = (char *)malloc(sizeof(char) * length + 1);
 	if (dest == NULL)
 		return (NULL);
 	i = -1;
 	while (++i < length)
-		dest[i] = s[i];
+		dest[i] = s1[i];
 	dest[i] = '\0';
 	return (dest);
 }
