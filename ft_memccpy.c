@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: sganon <sganon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:12:23 by sganon            #+#    #+#             */
-/*   Updated: 2015/12/01 13:59:16 by sganon           ###   ########.fr       */
+/*   Updated: 2018/09/17 15:54:43 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		dst2[i] = src2[i];
 		if ((unsigned char)c == src2[i])
-			return (&dst[i + 1]);
+			return (&((unsigned char *)dst)[i + 1]);
 	}
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sganon <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/29 17:11:57 by sganon            #+#    #+#              #
-#    Updated: 2015/11/30 07:55:16 by sganon           ###   ########.fr        #
+#    Updated: 2018/09/17 16:11:27 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME=libft.a
 
 CC=gcc
 
-CFLAGS=-Wall -Wextra -Werror -O3
+CFLAGS=-Wall -Wextra -Werror -O3 -fPIC
 
 RM=rm -f
 

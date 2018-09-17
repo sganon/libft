@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sganon <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: sganon <sganon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:41:57 by sganon            #+#    #+#             */
-/*   Updated: 2015/11/23 12:49:09 by sganon           ###   ########.fr       */
+/*   Updated: 2018/09/17 16:03:41 by sganon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	int writed;
+	writed = write(fd, &c, 1);
+	(void)writed;
 }
