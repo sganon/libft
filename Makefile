@@ -6,7 +6,7 @@
 #    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/29 17:11:57 by sganon            #+#    #+#              #
-#    Updated: 2018/09/17 16:11:27 by sganon           ###   ########.fr        #
+#    Updated: 2018/09/17 21:20:56 by sganon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC=ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_itoa.c\
 	ft_strsplit.c ft_strjoin.c ft_strtrim.c \
 	ft_strmap.c ft_strmapi.c ft_strtrim.c ft_strlcat.c\
 	ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
-	ft_lstmap.c \
+	ft_lstmap.c ft_itoa_base.c \
 
 OBJ=$(SRC:.c=.o)
 
