@@ -6,7 +6,7 @@
 #    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/29 17:11:57 by sganon            #+#    #+#              #
-#    Updated: 2019/05/11 19:53:09 by simon            ###   ########.fr        #
+#    Updated: 2019/05/11 19:55:31 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_DIRS ?= ./src
 OS = $(shell uname)
 ifeq ($(OS), Linux)
 	SRCS = $(shell find src -regex '[a-zA-Z.\/_0-9]+\.c$$')
-	TEST_SRCS = $(shell find test -regex '[a-zA-Z.\/_0-9]+\.c$$')
+	TEST_SRCS = $(shell find tests -regex '[a-zA-Z.\/_0-9]+\.c$$')
 endif
 ifeq ($(OS), Darwin)
 	SRCS = $(shell find -E src -regex '[a-zA-Z.\/_0-9]+\.c$$' | sed 's|^./||')
