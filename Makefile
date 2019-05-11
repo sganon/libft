@@ -6,29 +6,33 @@
 #    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/29 17:11:57 by sganon            #+#    #+#              #
-#    Updated: 2019/05/11 19:38:30 by simon            ###   ########.fr        #
+#    Updated: 2019/05/11 19:53:09 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
-
 CC=gcc
+CC_FLAGS = -Wall -Werror -Wextra -O3
+INC_FLAG = -I./
+
 
 NAME ?= libft.a
+TEST_NAME ?= libft_tests
+
 BUILD_DIR ?= ./build
 SRC_DIRS ?= ./src
 
-SRCS := $(shell find -E . -regex '[a-zA-Z.\/_]+\.c$$' | sed 's|^./||')
+OS = $(shell uname)
+ifeq ($(OS), Linux)
+	SRCS = $(shell find src -regex '[a-zA-Z.\/_0-9]+\.c$$')
+	TEST_SRCS = $(shell find test -regex '[a-zA-Z.\/_0-9]+\.c$$')
+endif
+ifeq ($(OS), Darwin)
+	SRCS = $(shell find -E src -regex '[a-zA-Z.\/_0-9]+\.c$$' | sed 's|^./||')
+	TEST_SRCS = $(shell find -E tests -regex '[a-zA-Z.\/_0-9]+\.c$$' | sed 's|^./||')
+endif
+
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
-
-TEST_SRCS := $(shell find -E ./tests -regex '[a-zA-Z.\/_]+\.c$$' | sed 's|^./||')
 TEST_OBJS := $(TEST_SRCS:%=$(BUILD_DIR)/%.o)
-TEST_NAME ?= libft_tests
-
-CFLAGS=-Wall -Wextra -Werror -O3 -fPIC
-
-CC_FLAGS = -Wall -Werror -Wextra -O3
-INC_FLAG = -I./
 
 $(BUILD_DIR)/%.c.o: %.c
 	@mkdir -p $(dir $@)
