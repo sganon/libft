@@ -6,7 +6,7 @@
 #    By: sganon <sganon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/29 17:11:57 by sganon            #+#    #+#              #
-#    Updated: 2018/09/17 21:20:56 by sganon           ###   ########.fr        #
+#    Updated: 2019/05/11 19:38:30 by simon            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,46 +14,53 @@ NAME=libft.a
 
 CC=gcc
 
+NAME ?= libft.a
+BUILD_DIR ?= ./build
+SRC_DIRS ?= ./src
+
+SRCS := $(shell find -E . -regex '[a-zA-Z.\/_]+\.c$$' | sed 's|^./||')
+OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
+
+TEST_SRCS := $(shell find -E ./tests -regex '[a-zA-Z.\/_]+\.c$$' | sed 's|^./||')
+TEST_OBJS := $(TEST_SRCS:%=$(BUILD_DIR)/%.o)
+TEST_NAME ?= libft_tests
+
 CFLAGS=-Wall -Wextra -Werror -O3 -fPIC
 
-RM=rm -f
+CC_FLAGS = -Wall -Werror -Wextra -O3
+INC_FLAG = -I./
 
-LDFLAGS=-L.
+$(BUILD_DIR)/%.c.o: %.c
+	@mkdir -p $(dir $@)
+	@printf "\e[36mCompiling $< to object\e[0m\n"
+	@$(CC) $(CC_FLAGS) -c $< -o $@ $(INC_FLAG)
+	@printf "\e[32m$@ created\e[0m\n"
 
-LDLIBS=-lft
+all : $(NAME)
 
-HDDIRS=-I includes/
-
-SRC=ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_itoa.c\
-	ft_memmove.c ft_memchr.c ft_memcmp.c \
-	ft_strstr.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c ft_strncat.c \
-	ft_putstr_fd.c ft_strchr.c ft_strrchr.c \
-	ft_strcmp.c ft_strncmp.c ft_strstr.c ft_strnstr.c ft_atoi.c \
-	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_isspace.c\
-	ft_striter.c ft_striteri.c ft_putendl.c ft_toupper.c ft_tolower.c \
-	ft_strsub.c ft_strclr.c ft_memdel.c ft_strnew.c ft_strdel.c \
-	ft_strequ.c ft_strnequ.c ft_memalloc.c ft_putendl_fd.c ft_putnbr_fd.c \
-	ft_putchar.c ft_putstr.c ft_putnbr.c ft_putchar_fd.c \
-	ft_strsplit.c ft_strjoin.c ft_strtrim.c \
-	ft_strmap.c ft_strmapi.c ft_strtrim.c ft_strlcat.c\
-	ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
-	ft_lstmap.c ft_itoa_base.c \
-
-OBJ=$(SRC:.c=.o)
-
-$(NAME): libft.h
-		$(CC) $(CFLAGS) -c $(SRC) $(HDDIRS)
-			ar rc $(NAME) $(OBJ)
-				ranlib $(NAME)
-
-all: $(NAME)
+$(NAME): libft.h $(OBJS)
+	@printf "\e[36mGenerating $(NAME)\e[0m\n"
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@printf "\e[32m$(NAME) generated\e[0m\n"
 
 clean:
-		$(RM) $(OBJ)
+	@rm -rf $(BUILD_DIR)
+	@printf "\e[32mObjects cleaned\e[0m\n"
 
-fclean: clean
-		$(RM) $(NAME)
+fclean : clean
+	@rm -f $(NAME)
+	@printf "\e[32m$(NAME) cleaned\e[0m\n"
 
-re: fclean all
+re : fclean all
 
-.PHONY: clean fclean
+test: $(NAME) tests/tests.h $(TEST_OBJS)
+	@printf "\e[36mGenerating $(TEST_NAME)\e[0m\n"
+	@$(CC) $(CC_FLAGS) -o $(TEST_NAME) $(TEST_OBJS) -L./ -lft
+	@printf "\e[32mGenerating $(TEST_NAME)\e[0m\n"
+
+run_test: test
+	./$(TEST_NAME)
+
+.PHONY : all clean fclean re run_test
+
