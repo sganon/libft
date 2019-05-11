@@ -2,12 +2,12 @@ version: 2
 
 workflows:
   version: 2
-  dist-compile:
+  test:
     jobs:
       - test
 
 jobs:
-  compile:
+  test:
     docker:
       - image: gcc:8.2
     steps:
